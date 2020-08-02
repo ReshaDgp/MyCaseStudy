@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cost_per_Calendar_Month__c</fullName>
+    <description>Amount of money customer pays on monthly basis.</description>
+    <externalId>false</externalId>
+    <formula>IF( OR(ISBLANK(Product__c), ISBLANK(Home_Country__c)) , &quot;-&quot;, IF(Product__r.Name = &apos;Standard&apos;, TEXT(Home_Country__r.Currency_Symbol__c) + &quot;0&quot;,  
+   IF(AND(Product__r.Name = &apos;Black&apos;, Home_Country__r.Name &lt;&gt; &apos;UK&apos;), TEXT(Home_Country__r.Currency_Symbol__c) + &quot;9.90&quot;, 
+   IF(AND(Product__r.Name = &apos;Metal&apos;, Home_Country__r.Name &lt;&gt; &apos;UK&apos;), TEXT(Home_Country__r.Currency_Symbol__c) + &quot;16.90&quot;, &apos;N/a&apos;))
+)
+)</formula>
+    <label>Cost per Calendar Month</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

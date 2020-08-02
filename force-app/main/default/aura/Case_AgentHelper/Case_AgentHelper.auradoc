@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>Documentation</aura:description>
+	<aura:example name="ExampleName" ref="exampleComponentName" label="Label">
+		This aura component is being used on Case layout to retreive the Contact specific details.
+	</aura:example>
+</aura:documentation>

@@ -1,0 +1,57 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,flexipage:availableForAllPageTypes" controller="Case_AgentHelper_Controller" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="customerDataWrapper" type="CustomerDataWrapper"/>
+    <aura:attribute name="showTable" type="Boolean"/>
+
+    <aura:if isTrue="{!v.showTable}">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+            <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                <div class="slds-truncate" title="{!$Label.c.Product}">{!$Label.c.Product}</div>
+                </th>
+                <th class="" scope="col">
+                <div class="slds-truncate" title="{!$Label.c.Home_Country}">{!$Label.c.Home_Country}</div>
+                </th>
+                <th class="" scope="col">
+                <div class="slds-truncate" title="{!$Label.c.Cost_per_Calendar_Month}">{!$Label.c.Cost_per_Calendar_Month}</div>
+                </th>
+                <th class="" scope="col">
+                <div class="slds-truncate" title="{!$Label.c.ATM_Fee_in_other_currencies}">{!$Label.c.ATM_Fee_in_other_currencies}</div>
+                </th>
+                <th class="" scope="col">
+                <div class="slds-truncate" title="{!$Label.c.Card_Replacement_Cost}">{!$Label.c.Card_Replacement_Cost}</div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="slds-hint-parent">
+                <th data-label="{!$Label.c.Product}" scope="row">
+                <div class="slds-truncate" title="{!v.customerDataWrapper.productType}">{!v.customerDataWrapper.productType}</div>
+                </th>
+                <td data-label="{!$Label.c.Home_Country}">
+                <div class="slds-truncate" title="{!v.customerDataWrapper.homeCountry}">{!v.customerDataWrapper.homeCountry}</div>
+                </td>
+                <td data-label="{!$Label.c.Cost_per_Calendar_Month}">
+                <div class="slds-truncate" title="{!v.customerDataWrapper.costPerMonth}">{!v.customerDataWrapper.costPerMonth}</div>
+                </td>
+                <td data-label="{!$Label.c.ATM_Fee_in_other_currencies}">
+                <div class="slds-truncate" title="{!v.customerDataWrapper.atmFee}">{!v.customerDataWrapper.atmFee}</div>
+                </td>
+                <td data-label="{!$Label.c.Card_Replacement_Cost}">
+                <div class="slds-truncate" title="{!v.customerDataWrapper.cardReplace}">{!v.customerDataWrapper.cardReplace}</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <aura:set attribute="else">
+            <ui:message title="Information" severity="info" closable="false">
+                <div>
+                    The Contact has no <span class="slds-text-title_bold">"Product"</span> and <span class="slds-text-title_bold">"Home Country"</span>.
+                </div>
+            </ui:message>
+        </aura:set>
+    </aura:if>
+</aura:component>
